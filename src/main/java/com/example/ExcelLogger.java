@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,25 +15,45 @@ public class ExcelLogger {
 
     public static void main(String[] args) {
         String filePath = "test.xls";
+        File file = new File(filePath);
+        Workbook workbook = null;
+        Sheet sheet = null;
 
-        try (FileInputStream fileInputStream = new FileInputStream(filePath); 
-        Workbook workbook = new HSSFWorkbook(fileInputStream)) {
+        try {
+            if (file.exists()) {
+                try (FileInputStream fileInputStream = new FileInputStream(file)) {
+                    workbook = new HSSFWorkbook(fileInputStream);
+                }
+                sheet = workbook.getSheetAt(0);
+            } else {
+                workbook = new HSSFWorkbook();
+                sheet = workbook.createSheet("Sheet1");
+            }
 
-            Sheet sheet = workbook.getSheetAt(0);
             int lastRowNum = sheet.getLastRowNum();
-
+            if (lastRowNum == 0 && sheet.getRow(0) == null) {
+                lastRowNum = -1;
+            }
             Row newRow = sheet.createRow(lastRowNum + 1);
             Cell cell = newRow.createCell(0);
             cell.setCellValue("Build successful!");
 
-            try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
                 workbook.write(fileOutputStream);
             }
 
-            System.out.println("Build message executed into xlx file.");
+            System.out.println("Build message logged into Excel file.");
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (workbook != null) {
+                try {
+                    workbook.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
