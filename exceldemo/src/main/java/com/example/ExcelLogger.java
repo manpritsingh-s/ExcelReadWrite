@@ -15,7 +15,8 @@ public class ExcelLogger {
     public static void main(String[] args) {
         String filePath = "test.xls";
 
-        try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new HSSFWorkbook(fis)) {
+        try (FileInputStream fileInputStream = new FileInputStream(filePath); 
+        Workbook workbook = new HSSFWorkbook(fileInputStream)) {
 
             Sheet sheet = workbook.getSheetAt(0);
             int lastRowNum = sheet.getLastRowNum();
@@ -24,11 +25,11 @@ public class ExcelLogger {
             Cell cell = newRow.createCell(0);
             cell.setCellValue("Build successful!");
 
-            try (FileOutputStream fos = new FileOutputStream(filePath)) {
-                workbook.write(fos);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
+                workbook.write(fileOutputStream);
             }
 
-            System.out.println("Build message written to Excel file.");
+            System.out.println("Build message executed into xlx file.");
 
         } catch (IOException e) {
             e.printStackTrace();
