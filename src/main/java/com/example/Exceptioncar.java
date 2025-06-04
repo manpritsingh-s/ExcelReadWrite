@@ -13,6 +13,7 @@ public class Exceptioncar {
             display("red");
         } catch (Exception e) {
             System.out.print("Exception occurs:"+e.getMessage());
+            System.out.print("Exception not occured :- "+e.getMessage());
         }
         
     }
