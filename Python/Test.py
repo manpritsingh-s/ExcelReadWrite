@@ -55,11 +55,6 @@
 print("-------------------------------------")
 
 list = [2,8,1,13,5,90,55,12]
-sortList = sorted(list)
-print("Sorting it in ascending order",sortList)
-print("-------------------------------------")
-print("Printing in reverse order",sortList[::-1])
-
     
     
     
