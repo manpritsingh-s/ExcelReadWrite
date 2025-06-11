@@ -7,14 +7,6 @@ public class Exceptioncar {
         }
         System.out.println("the Color is:- "+color);
 
-    }
-    public static void main(String[] args) {
-        try {
-            display("red");
-        } catch (Exception e) {
-            System.out.print("Exception occurs:"+e.getMessage());
-            System.out.print("Exception not occured :- "+e.getMessage());
-        }
         
     }
 }
