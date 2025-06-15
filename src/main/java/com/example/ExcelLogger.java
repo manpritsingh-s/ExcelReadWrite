@@ -15,8 +15,8 @@ public class ExcelLogger {
 
     public static void main(String[] args) {
         String filePath = "test.xls";
-        File file = new File(filePath);
-        Workbook workbook = null;
+        // File file = new File(filePath);
+        // Workbook workbook = null;
         Sheet sheet = null;
 
         try {
