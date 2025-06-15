@@ -22,7 +22,7 @@ public class ExcelLogger {
         try {
             if (file.exists()) {
                 try (FileInputStream fileInputStream = new FileInputStream(file)) {
-                    workbook = new HSSFWorkbook(fileInputStream);
+                    // workbook = new HSSFWorkbook(fileInputStream);
                 }
                 sheet = workbook.getSheetAt(0);
             } else {
