@@ -45,14 +45,10 @@ public class ExcelLogger {
             System.out.println("Build message logged into Excel file.");
 
         } catch (IOException e) {
-            e.printStackTrace();
+          
         } finally {
             if (workbook != null) {
-                try {
-                    workbook.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+               
             }
         }
     }
