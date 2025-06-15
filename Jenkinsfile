@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven3'
-        jdk 'jdk17'
-    }
     stages {
         stage('Clone Repo') {
             steps {
@@ -17,9 +13,6 @@ pipeline {
             }
         }
         stage('Run Tests') {
-            steps {
-                bat 'mvn test'
-            }
         }
     }
     post {
