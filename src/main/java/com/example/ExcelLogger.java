@@ -34,9 +34,9 @@ public class ExcelLogger {
             if (lastRowNum == 0 && sheet.getRow(0) == null) {
                 lastRowNum = -1;
             }
-            Row newRow = sheet.createRow(lastRowNum + 1);
-            Cell cell = newRow.createCell(0);
-            cell.setCellValue("Build successful!");
+            // Row newRow = sheet.createRow(lastRowNum + 1);
+            // Cell cell = newRow.createCell(0);
+            // cell.setCellValue("Build successful!");
 
             try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
                 workbook.write(fileOutputStream);
