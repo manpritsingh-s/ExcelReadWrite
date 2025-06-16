@@ -27,7 +27,7 @@ public class ExcelLogger {
                 sheet = workbook.getSheetAt(0);
             } else {
                 workbook = new HSSFWorkbook();
-                sheet = workbook.createSheet("Sheet1");
+                // sheet = workbook.createSheet("Sheet1");
             }
 
             int lastRowNum = sheet.getLastRowNum();
